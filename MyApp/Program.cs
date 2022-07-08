@@ -12,7 +12,7 @@ if (Civi!=null)
 }
 else
 {
-    Console.WriteLine("**** No se pudieron obtener las Civilizaciones, intente mas tarde ****");
+    Console.WriteLine("**** ERROR! No se pudieron obtener las Civilizaciones, intente mas tarde ****");
 }
 
 //--------- Funciones ------------
@@ -51,44 +51,48 @@ Civilizacion obtenerCivilizaciones()
 
 void mostrarCivilizaciones()
 {
-    Console.WriteLine("#### CIVILIZACIONES ####");
+    Console.WriteLine("CIVILIZACION | ID\n");
     foreach (Civilization unaCivilizacion in Civi.Civilizations)
     {
-        Console.WriteLine(unaCivilizacion.Name);
+        Console.WriteLine($"{unaCivilizacion.Name} -> ({unaCivilizacion.Id})");
     }
 }
 
 void mostrarCaracteristicas()
 {
-    string aux;
-    bool aux2;
+    int id;
+    bool aux;
     int op;
     do
     {
-        Console.WriteLine("\n=> Ingrese el nombre de la Civilizacion para ver sus caracteriticas (1er letra en mayusc):");
-        aux = Console.ReadLine()!;
-        aux2 = false;
+        Console.WriteLine("\n=> Ingrese el ID de la Civilizacion para ver sus caracteriticas:");
+        id = Convert.ToInt32(Console.ReadLine());
+        aux = false;
         foreach (Civilization unaCivilizacion in Civi.Civilizations)
         {
-            if (unaCivilizacion.Name==aux)
+            if (unaCivilizacion.Id==id)
             {
                 Console.WriteLine($"\n# Id: {unaCivilizacion.Id}");
                 Console.WriteLine($"# Name: {unaCivilizacion.Name}");
                 Console.WriteLine($"# Expansion: {unaCivilizacion.Expansion}");
                 Console.WriteLine($"# ArmyType: {unaCivilizacion.ArmyType}");
+                if (unaCivilizacion.UniqueUnit.Count()>0) //ejemplo: la Civ de id 31 no tiene UniqueUnit
+                {
+                    Console.WriteLine($"# UniqueUnit: {unaCivilizacion.UniqueUnit[0]}");
+                }
                 Console.WriteLine($"# TeamBonus: {unaCivilizacion.TeamBonus}");
                 Console.WriteLine($"# CivilizationBonus:");
                 foreach (string item in unaCivilizacion.CivilizationBonus)
                 {
                     Console.WriteLine("     - "+item);
                 }
-                aux2 = true;
+                aux = true;
                 break;
             }
         }
-        if (!aux2)
+        if (!aux)
         {
-            Console.WriteLine("\n**** Error! el nombre ingresado es invalido ****");
+            Console.WriteLine("\n**** Error! el ID ingresado es invalido ****");
         }
         do
         {
