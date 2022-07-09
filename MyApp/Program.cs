@@ -2,27 +2,27 @@
 using System.Text.Json;
 //using System.Linq; -> para usar OrderBy 
 
-int ejercicio;
+int opcion;
 do
 {
     do
     {
         Console.Write("\n=> INGRESE UNA OPCION:");
-        System.Console.WriteLine("(1)Ejercicio1 - (2)Ejercicio2 - (3)Salir)");
-        ejercicio = Convert.ToInt32(Console.ReadLine());
-    } while (ejercicio<1 || ejercicio>3);
-    if (ejercicio==1)
+        Console.WriteLine("(1)Ejercicio1 - (2)Ejercicio2 - (3)Salir)");
+        opcion = Convert.ToInt32(Console.ReadLine());
+    } while (opcion<1 || opcion>3);
+    if (opcion==1)
     {
         ejercicio1();
     }
     else
     {
-        if (ejercicio==2)
+        if (opcion==2)
         {
             ejercicio2();
         }
     }
-} while (ejercicio==1 || ejercicio==2);
+} while (opcion==1 || opcion==2);
 Console.WriteLine("***** FIN DEL PROGRAMA *****");
 
 ////////////////////////////////
