@@ -28,7 +28,7 @@ public class Civilization
     public List<string> CivilizationBonus { get; set; }
 }
 
-public class Civilizacion
+public class RootCivilizacion
 {
     [JsonPropertyName("civilizations")]
     public List<Civilization> Civilizations { get; set; }
